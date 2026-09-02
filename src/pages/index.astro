@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SplitText from '../components/SplitText.tsx';
+---
+
+<Layout>
+  <main class="flex min-h-screen flex-col items-center justify-center gap-6 px-6">
+    <SplitText
+      client:load
+      text="Astro + React + Tailwind + ReactBits"
+      tag="h1"
+      className="text-4xl font-bold sm:text-6xl"
+      delay={40}
+    />
+    <p class="max-w-md text-center text-neutral-400">
+      Edit <code class="rounded bg-neutral-800 px-1 py-0.5">src/pages/index.astro</code>.
+      Add more components from <a class="underline" href="https://reactbits.dev">reactbits.dev</a>
+      with <code class="rounded bg-neutral-800 px-1 py-0.5">npx shadcn@latest add https://reactbits.dev/r/&lt;Name&gt;-TS-TW</code>.
+    </p>
+  </main>
+</Layout>
