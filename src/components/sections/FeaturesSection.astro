@@ -1,0 +1,30 @@
+---
+import { m } from '../../paraglide/messages.js';
+import FeatureCard from './FeatureCard.astro';
+import PlaceholderVisual from '../PlaceholderVisual.astro';
+
+// TODO: when src/assets/dashboard-light.png and src/assets/dashboard-dark.png
+// exist, replace the PlaceholderVisual in the "daily" and "mentions" cards with
+// astro:assets <Image>:
+//   import { Image } from 'astro:assets';
+//   import dashboardLight from '../../assets/dashboard-light.png';
+//   <Image slot="visual" src={dashboardLight} alt={m.feature_daily_alt()}
+//     class="h-full w-full object-cover object-[top_left]" />
+//   (dark: object-[top_right], alt={m.feature_mentions_alt()})
+---
+<section id="features" class="px-7">
+  <div class="mx-auto grid max-w-[var(--content-max)] grid-cols-1 gap-11 md:grid-cols-2">
+    <FeatureCard title={m.feature_cost_title()} body={m.feature_cost_body()}>
+      <PlaceholderVisual slot="visual" caption={m.feature_cost_visual()} />
+    </FeatureCard>
+    <FeatureCard title={m.feature_daily_title()} body={m.feature_daily_body()}>
+      <PlaceholderVisual slot="visual" caption={m.feature_daily_visual()} />
+    </FeatureCard>
+    <FeatureCard title={m.feature_history_title()} body={m.feature_history_body()}>
+      <PlaceholderVisual slot="visual" caption={m.feature_history_visual()} />
+    </FeatureCard>
+    <FeatureCard title={m.feature_mentions_title()} body={m.feature_mentions_body()}>
+      <PlaceholderVisual slot="visual" caption={m.feature_mentions_visual()} />
+    </FeatureCard>
+  </div>
+</section>

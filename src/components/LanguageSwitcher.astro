@@ -1,0 +1,37 @@
+---
+import { localizeHref, deLocalizeHref } from '../paraglide/runtime.js';
+import { m } from '../paraglide/messages.js';
+
+const LOCALES: Array<'fr' | 'en'> = ['fr', 'en'];
+
+const currentLocale = Astro.currentLocale ?? 'fr';
+const basePath = deLocalizeHref(Astro.url.pathname);
+
+const names: Record<'fr' | 'en', string> = {
+  fr: m.language_name_fr(),
+  en: m.language_name_en(),
+};
+
+const links = LOCALES.map((locale) => {
+  const attrs: Record<string, string> = {
+    href: localizeHref(basePath, { locale }),
+    hreflang: locale,
+  };
+  if (locale === currentLocale) {
+    attrs['aria-current'] = 'page';
+  }
+  return { locale, name: names[locale], attrs };
+});
+---
+<nav aria-label={m.language_switcher_label()} class="flex items-center gap-1 text-[13px] font-medium">
+  {
+    links.map((link) => (
+      <a
+        {...link.attrs}
+        class="rounded-[7px] px-2 py-1 text-ink-3 aria-[current=page]:bg-surface-chip aria-[current=page]:text-ink"
+      >
+        {link.name}
+      </a>
+    ))
+  }
+</nav>

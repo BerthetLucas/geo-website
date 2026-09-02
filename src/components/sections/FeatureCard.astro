@@ -1,0 +1,17 @@
+---
+// One feature: heading, a 16/10 visual box (filled via the "visual" slot),
+// and a one-line description. Reused 4x in FeaturesSection.
+interface Props {
+  title: string;
+  body: string;
+}
+
+const { title, body } = Astro.props;
+---
+<article class="flex flex-col gap-4.5">
+  <h2 class="my-0 text-[28px] font-bold tracking-[-0.022em] text-ink">{title}</h2>
+  <div class="grid aspect-[16/10] place-items-center overflow-hidden rounded-[14px] bg-surface-placeholder">
+    <slot name="visual" />
+  </div>
+  <p class="my-0 max-w-[46ch] text-[15px] leading-[1.6] text-ink-3">{body}</p>
+</article>

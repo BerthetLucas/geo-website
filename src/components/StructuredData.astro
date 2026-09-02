@@ -1,0 +1,39 @@
+---
+import { m } from '../paraglide/messages.js';
+
+const siteUrl = new URL('/', Astro.site).href;
+
+const organization = {
+  '@type': 'Organization',
+  '@id': `${siteUrl}#organization`,
+  name: 'GEO Compass',
+  url: siteUrl,
+  logo: new URL('/favicon.svg', Astro.site).href,
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': `${siteUrl}#website`,
+  name: 'GEO Compass',
+  url: siteUrl,
+  description: m.meta_description(),
+  publisher: { '@id': `${siteUrl}#organization` },
+  inLanguage: ['fr', 'en'],
+};
+
+const application = {
+  '@type': 'SoftwareApplication',
+  name: 'GEO Compass',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  url: 'https://geo-compass-front-end.vercel.app',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  publisher: { '@id': `${siteUrl}#organization` },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [organization, website, application],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />

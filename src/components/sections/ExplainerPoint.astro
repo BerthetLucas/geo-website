@@ -1,0 +1,13 @@
+---
+// One labelled point in the GEO explainer. Reused 3x.
+interface Props {
+  title: string;
+  body: string;
+}
+
+const { title, body } = Astro.props;
+---
+<div>
+  <h3 class="my-0 mb-1.25 text-[15px] font-semibold text-ink">{title}</h3>
+  <p class="my-0 text-[14.5px] leading-[1.6] text-ink-3">{body}</p>
+</div>

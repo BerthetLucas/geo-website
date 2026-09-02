@@ -1,0 +1,10 @@
+---
+// Caption box shown where a real screenshot is not available yet.
+// Sits inside a parent that provides the aspect-ratio box + background.
+interface Props {
+  caption: string;
+}
+
+const { caption } = Astro.props;
+---
+<span class="px-5 py-5 text-center text-[13px] font-medium text-ink-4">{caption}</span>

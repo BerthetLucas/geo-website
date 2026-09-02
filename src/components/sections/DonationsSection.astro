@@ -1,0 +1,25 @@
+---
+import { m } from '../../paraglide/messages.js';
+import PlaceholderVisual from '../PlaceholderVisual.astro';
+---
+<section id="dons" class="px-7 pb-24">
+  <div class="mx-auto flex max-w-[var(--content-max)] flex-col gap-5.5">
+    <h2 class="my-0 text-center text-[clamp(24px,2.6vw,32px)] font-bold leading-[1.2] tracking-[-0.025em] text-ink">
+      {m.donations_title()}
+    </h2>
+    <p class="mx-auto my-0 max-w-[60ch] text-center text-[16px] leading-[1.6] text-ink-3">
+      {m.donations_body()}
+    </p>
+    <div class="grid aspect-[16/9] place-items-center overflow-hidden rounded-[12px] bg-surface-placeholder">
+      <PlaceholderVisual caption={m.donations_visual()} />
+    </div>
+    <div class="flex justify-center">
+      {/* TODO: replace with real donation URL when the donation flow exists */}
+      <a
+        href="#dons"
+        class="inline-flex items-center rounded-[10px] border border-[var(--border-3)] px-6.5 py-3.25 text-[14px] font-semibold text-ink transition-colors hover:border-[var(--ink)]"
+        >{m.donations_button()}</a
+      >
+    </div>
+  </div>
+</section>

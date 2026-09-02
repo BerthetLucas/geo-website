@@ -1,0 +1,62 @@
+---
+import { deLocalizeHref, localizeHref, locales } from '../paraglide/runtime.js';
+import type { Locale } from '../paraglide/runtime.js';
+import { m } from '../paraglide/messages.js';
+
+interface Props {
+  locale: Locale;
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const hreflangMap: Record<Locale, string> = {
+  fr: 'fr-FR',
+  en: 'en-US',
+};
+
+const { locale, title, description, image = '/og.png' } = Astro.props;
+
+const pageTitle = title ?? m.meta_title();
+const pageDescription = description ?? m.meta_description();
+
+const canonicalPath = localizeHref(deLocalizeHref(Astro.url.pathname), { locale });
+const canonicalUrl = new URL(canonicalPath, Astro.site).href;
+const imageUrl = new URL(image, Astro.site).href;
+
+const alternates = locales.map((code) => ({
+  hreflang: hreflangMap[code],
+  href: new URL(localizeHref(deLocalizeHref(Astro.url.pathname), { locale: code }), Astro.site).href,
+}));
+
+const defaultAlternate = new URL(
+  deLocalizeHref(Astro.url.pathname),
+  Astro.site,
+).href;
+---
+<title>{pageTitle}</title>
+<meta name="description" content={pageDescription} />
+<link rel="canonical" href={canonicalUrl} />
+
+{alternates.map((alt) => (
+  <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+))}
+<link rel="alternate" hreflang="x-default" href={defaultAlternate} />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GEO Compass" />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={pageDescription} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:locale" content={hreflangMap[locale]} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:alt" content={m.meta_og_alt()} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={pageDescription} />
+<meta name="twitter:image" content={imageUrl} />
+
+{/* literal hex required — meta cannot reference CSS vars; mirror --surface-page light / dark in global.css */}
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0d0f0e" media="(prefers-color-scheme: dark)" />

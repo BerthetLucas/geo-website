@@ -1,1 +1,101 @@
+@import "@fontsource-variable/plus-jakarta-sans";
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-sans: "Plus Jakarta Sans Variable", system-ui, sans-serif;
+
+  --accent: #0f7a54;
+  --accent-hover: #0c6244;
+  --accent-border: rgba(15, 122, 84, 0.3);
+
+  --ink: #111413;
+  --ink-2: #3d4442;
+  --ink-3: #5b6360;
+  --ink-4: #7b8380;
+
+  --surface-page: #ffffff;
+  --surface-band: #fafbfa;
+  --surface-chip: #f2f4f3;
+  --surface-chip-hover: #e6e9e8;
+  --surface-placeholder: #dcdedd;
+
+  --border: #ececec;
+  --border-2: #e6e9e8;
+  --border-3: #d7dbda;
+
+  --grid-line: #eef0ef;
+  --dot: #d9dedc;
+
+  --radius: 12px;
+  --content-max: 1440px;
+}
+
+:root.dark {
+  --accent: #2bb27d;
+  --accent-hover: #46c795;
+  --accent-border: rgba(43, 178, 125, 0.35);
+
+  --ink: #f2f4f3;
+  --ink-2: #cdd2d0;
+  --ink-3: #9aa2a0;
+  --ink-4: #7b8380;
+
+  --surface-page: #0d0f0e;
+  --surface-band: #121514;
+  --surface-chip: #1a1e1c;
+  --surface-chip-hover: #232825;
+  --surface-placeholder: #2a2f2d;
+
+  --border: #242927;
+  --border-2: #2b302e;
+  --border-3: #333937;
+
+  --grid-line: #1c201e;
+  --dot: #262b29;
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --color-accent: var(--accent);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-surface-page: var(--surface-page);
+  --color-surface-band: var(--surface-band);
+  --color-surface-chip: var(--surface-chip);
+  --color-surface-placeholder: var(--surface-placeholder);
+  --color-border-token: var(--border);
+}
+
+html {
+  background: var(--surface-page);
+  color: var(--ink);
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes gcgrid {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 56px 56px, 56px 56px; }
+}
+
+@keyframes gcdots {
+  from { background-position: 0 0; }
+  to { background-position: 0 -240px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; }
+}

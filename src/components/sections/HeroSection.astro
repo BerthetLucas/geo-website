@@ -1,0 +1,18 @@
+---
+import { m } from '../../paraglide/messages.js';
+---
+<section id="top" class="px-10 pt-20 pb-16 text-center">
+  <div class="mx-auto max-w-[var(--content-max)]">
+    <div class="mx-auto max-w-180">
+      <h1 class="my-0 mb-3.5 text-[clamp(38px,4.6vw,56px)] font-bold leading-[1.05] tracking-[-0.035em] text-ink">
+        {m.hero_title()}
+      </h1>
+      <p class="my-0 mb-7.5 text-[18px] leading-normal text-ink-3">{m.hero_tagline()}</p>
+      <a
+        href="#geo"
+        class="inline-flex items-center gap-1.75 border-b border-[var(--accent-border)] pb-0.5 text-[14px] font-medium text-accent transition-colors hover:border-[var(--accent)]"
+        >{m.hero_explainer_link()}</a
+      >
+    </div>
+  </div>
+</section>

@@ -204,8 +204,15 @@ agent greps for untranslated keys.
 
 ## Work split — 3 herdr tabs / agents
 
-Each tab = its own git worktree off `main`. Review agent gates every merge.
-`pnpm` is the package manager (sibling project uses it).
+All agents work in the one working tree (`geo-website/`) — **no worktrees, no
+branches, no commits by agents**. The user performs every git operation and
+commits at the checkpoints below. Agents leave changes unstaged. `pnpm` is the
+package manager (sibling project uses it).
+
+Checkpoints for the user to commit:
+1. after `foundation` builds green with empty `<main>`;
+2. after `sections` renders both locales and `review` passes;
+3. after supplied PNGs / OG image are wired.
 
 ### Tab 1 — `foundation`
 Runs first; tabs 2–3 branch after it lands on `main`.
@@ -222,7 +229,7 @@ Runs first; tabs 2–3 branch after it lands on `main`.
 - Deliverable: `pnpm build` green with an empty `<main>`.
 
 ### Tab 2 — `sections`
-Branches from `main` after Tab 1.
+Starts after Tab 1's changes are committed by the user.
 - All `src/components/sections/*`, `PlaceholderVisual.astro`, `FeatureCard.astro`.
 - `src/pages/index.astro` + `src/pages/en/index.astro`.
 - Fills `features.*`, `hero.*`, `cta.*`, `donations.*`, `geo.*` in both message files.
@@ -231,19 +238,22 @@ Branches from `main` after Tab 1.
 - Dark-mode values for every section using the CSS vars; tunes `--accent` dark for AA.
 
 ### Tab 3 — `review` (continuous)
-- After each push on a feature branch: `pnpm astro check`, `pnpm tsc --noEmit`,
+Runs under the **ponytail** skill (laziest-solution reviewer) in addition to the
+correctness checks below — flags over-engineering, needless deps, speculative
+abstraction, and anything the stdlib / Astro native features already cover.
+- On request after a batch of section work: `pnpm astro check`, `pnpm tsc --noEmit`,
   `pnpm build`, `node scripts/check-locales.mjs`, Lighthouse (via
   `@lhci/cli` or `npx unlighthouse`), `eslint` if configured.
 - Enforces: one component per file; no ternaries in JSX / `.astro` expressions
   (conditions → named variable or sub-component); island directives are the
   narrowest that works; no `client:load`; no hard-coded hex outside
   `global.css`; both locales render; `alt` text present; heading order sane.
-- Posts findings as a checklist per branch; approves or blocks the merge to `main`.
+- Posts findings as a checklist; the user commits once findings are cleared.
 - Uses the `superpowers:requesting-code-review` / `receiving-code-review` flow.
 
-### Merge order
-`foundation` → `main`; then `sections` builds, `review` gates, merge to `main`;
-final commit wires any supplied PNGs. Dark-mode + i18n are built into every
+### Order
+`foundation` → user commits → `sections` + `review` iterate → user commits →
+wire supplied PNGs → user commits. Dark-mode + i18n are built into every
 component from the start, not bolted on.
 
 ## Open items

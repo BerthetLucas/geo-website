@@ -12,5 +12,8 @@ npm-debug.log*
 .env
 .env.production
 
+# paraglide compiled output (regenerated on build/dev)
+src/paraglide/
+
 # macOS
 .DS_Store

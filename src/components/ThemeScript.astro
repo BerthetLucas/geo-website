@@ -1,0 +1,11 @@
+---
+// Render-blocking, runs before paint — sets the theme class with no FOUC.
+---
+<script is:inline>
+  (() => {
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const dark = stored === 'dark' || (stored === null && prefersDark);
+    document.documentElement.classList.toggle('dark', dark);
+  })();
+</script>

@@ -1,0 +1,22 @@
+---
+import { m } from '../paraglide/messages.js';
+
+const APP_URL = 'https://geo-compass-front-end.vercel.app';
+
+const links = [
+  { href: `${APP_URL}/en/legal`, label: m.footer_legal() },
+  { href: `${APP_URL}/en/terms`, label: m.footer_terms() },
+  { href: `${APP_URL}/en/privacy`, label: m.footer_privacy() },
+  { href: `${APP_URL}/en/login`, label: m.footer_login() },
+];
+---
+<footer class="relative z-[1] border-t border-border-token px-7 py-9">
+  <div class="mx-auto flex max-w-[var(--content-max)] flex-wrap items-center justify-between gap-4.5 text-[13.5px] text-ink-4">
+    <span>{m.footer_copyright()}</span>
+    <nav class="flex flex-wrap gap-5.5">
+      {links.map((link) => (
+        <a href={link.href} class="text-ink-3 transition-colors hover:text-ink">{link.label}</a>
+      ))}
+    </nav>
+  </div>
+</footer>

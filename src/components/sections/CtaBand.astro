@@ -1,0 +1,14 @@
+---
+import { m } from '../../paraglide/messages.js';
+
+const registerHref = 'https://geo-compass-front-end.vercel.app/en/register';
+---
+<section class="px-10 py-16 text-center">
+  <div class="mx-auto max-w-[var(--content-max)]">
+    <a
+      href={registerHref}
+      class="inline-flex min-w-65 items-center justify-center rounded-[10px] bg-surface-chip px-7 py-3.5 text-[14px] font-semibold text-ink transition-colors hover:bg-[var(--ink)] hover:text-[var(--surface-page)]"
+      >{m.cta_button()}</a
+    >
+  </div>
+</section>
