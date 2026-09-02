@@ -23,6 +23,9 @@ forms, the actual donation flow.
 ## Rules (from the request)
 
 - **Clean code:** one component per file, no more. Descriptive, readable names.
+- **No ternaries in JSX.** Any conditional goes into a named variable declared
+  above the return and used in the markup, or into a dedicated sub-component.
+  Applies to `.tsx` islands and to `.astro` template expressions.
 - **Islands everywhere sensible** for max performance — `.astro` static by
   default, React `.tsx` islands only where interactivity is required, hydrated
   with the narrowest directive (`client:idle` / `client:visible` / `client:media`).
@@ -231,9 +234,10 @@ Branches from `main` after Tab 1.
 - After each push on a feature branch: `pnpm astro check`, `pnpm tsc --noEmit`,
   `pnpm build`, `node scripts/check-locales.mjs`, Lighthouse (via
   `@lhci/cli` or `npx unlighthouse`), `eslint` if configured.
-- Enforces: one component per file; island directives are the narrowest that
-  works; no `client:load`; no hard-coded hex outside `global.css`; both locales
-  render; `alt` text present; heading order sane.
+- Enforces: one component per file; no ternaries in JSX / `.astro` expressions
+  (conditions → named variable or sub-component); island directives are the
+  narrowest that works; no `client:load`; no hard-coded hex outside
+  `global.css`; both locales render; `alt` text present; heading order sane.
 - Posts findings as a checklist per branch; approves or blocks the merge to `main`.
 - Uses the `superpowers:requesting-code-review` / `receiving-code-review` flow.
 
