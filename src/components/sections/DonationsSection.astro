@@ -4,47 +4,37 @@ import HeartPlusIcon from '../icons/HeartPlusIcon.astro';
 import KeyIcon from '../icons/KeyIcon.astro';
 ---
 
-<section id="dons" class="px-7 pb-24">
-  <div class="mx-auto flex max-w-(--content-max) flex-col gap-5.5">
-    <h2
-      class="text-ink my-0 text-center text-[clamp(24px,2.6vw,32px)] leading-[1.2] font-bold tracking-[-0.025em]"
+<section id="dons" class="mx-auto flex max-w-(--content-max) flex-col gap-5.5 px-7 pb-24">
+  <h2
+    class="text-ink my-0 text-center text-[clamp(24px,2.6vw,32px)] leading-[1.2] font-bold tracking-[-0.025em]"
+  >
+    {m.donations_title()}
+  </h2>
+  <p class="text-ink-3 mx-auto my-0 max-w-[60ch] text-center text-[16px] leading-[1.6]">
+    {m.donations_body()}
+  </p>
+  <div class="mt-4 grid grid-cols-1 gap-5.5 sm:grid-cols-2">
+    <div
+      class="flex flex-col items-center gap-4 rounded-[14px] border border-(--border-2) px-6 py-8 text-center"
     >
-      {m.donations_title()}
-    </h2>
-    <p class="text-ink-3 mx-auto my-0 max-w-[60ch] text-center text-[16px] leading-[1.6]">
-      {m.donations_body()}
-    </p>
-    <div class="mt-4 grid grid-cols-1 gap-5.5 sm:grid-cols-2">
-      <div
-        class="flex flex-col items-center gap-4 rounded-[14px] border border-(--border-2) px-6 py-8 text-center"
-      >
-        <p class="text-ink-2 my-0 max-w-[32ch] text-[14.5px] leading-[1.55]">
-          {m.donations_shared_body()}
-        </p>
-        <HeartPlusIcon class="text-accent" />
-        <p class="text-ink my-0 text-[15px] font-semibold tracking-[-0.01em]">
-          {m.donations_shared_title()}
-        </p>
-      </div>
-      <div
-        class="flex flex-col items-center gap-4 rounded-[14px] border border-(--border-2) px-6 py-8 text-center"
-      >
-        <p class="text-ink-2 my-0 max-w-[32ch] text-[14.5px] leading-[1.55]">
-          {m.donations_ownkey_body()}
-        </p>
-        <KeyIcon class="text-accent" />
-        <p class="text-ink my-0 text-[15px] font-semibold tracking-[-0.01em]">
-          {m.donations_ownkey_title()}
-        </p>
-      </div>
+      <p class="text-ink-2 my-0 max-w-[32ch] text-[14.5px] leading-[1.55]">
+        {m.donations_shared_body()}
+      </p>
+      <HeartPlusIcon class="text-accent" />
+      <p class="text-ink my-0 text-[15px] font-semibold tracking-[-0.01em]">
+        {m.donations_shared_title()}
+      </p>
     </div>
-    <div class="flex justify-center">
-      {/* TODO: replace with real donation URL when the donation flow exists */}
-      <a
-        href="#dons"
-        class="text-ink inline-flex items-center rounded-[10px] border border-(--border-3) px-6.5 py-3.25 text-[14px] font-semibold transition-colors hover:border-[var(--ink)]"
-        >{m.donations_button()}</a
-      >
+    <div
+      class="flex flex-col items-center gap-4 rounded-[14px] border border-(--border-2) px-6 py-8 text-center"
+    >
+      <p class="text-ink-2 my-0 max-w-[32ch] text-[14.5px] leading-[1.55]">
+        {m.donations_ownkey_body()}
+      </p>
+      <KeyIcon class="text-accent" />
+      <p class="text-ink my-0 text-[15px] font-semibold tracking-[-0.01em]">
+        {m.donations_ownkey_title()}
+      </p>
     </div>
   </div>
 </section>

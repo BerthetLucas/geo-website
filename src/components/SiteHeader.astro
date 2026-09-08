@@ -1,5 +1,6 @@
 ---
 import { m } from '../paraglide/messages.js';
+import { localizeHref, deLocalizeHref } from '../paraglide/runtime.js';
 import ThemeToggle from './ThemeToggle.tsx';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import MobileNav from './MobileNav.tsx';
@@ -13,8 +14,18 @@ const mobileLinks = [
   { href: loginHref, label: m.header_login() },
   { href: registerHref, label: m.header_register() },
 ];
+
+const currentLocale = Astro.currentLocale ?? 'fr';
+const basePath = deLocalizeHref(Astro.url.pathname);
+const localeNames: Record<'fr' | 'en', string> = { fr: m.language_name_fr(), en: m.language_name_en() };
+const localeLinks = (['fr', 'en'] as const).map((locale) => ({
+  locale,
+  label: localeNames[locale],
+  href: localizeHref(basePath, { locale }),
+  current: locale === currentLocale,
+}));
 ---
-<header class="relative z-[1] mx-auto flex max-w-[var(--content-max)] items-center justify-between gap-6 px-7 py-5.5">
+<header class="relative z-50 mx-auto flex max-w-(--content-max) items-center justify-between gap-6 px-7 py-5.5">
   <a href="#top" aria-label={m.header_home_aria()} class="flex items-center gap-2.25">
     <LogoMark class="text-accent" />
     <span class="text-[15px] font-semibold tracking-[-0.015em] text-ink">GEO Compass</span>
@@ -44,6 +55,7 @@ const mobileLinks = [
         openLabel={m.header_menu_open()}
         closeLabel={m.header_menu_close()}
         links={mobileLinks}
+        localeLinks={localeLinks}
       />
     </div>
   </div>
