@@ -10,7 +10,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check-locales": "node scripts/check-locales.mjs"
+    "check-locales": "node scripts/check-locales.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@astrojs/react": "^6.0.5",
@@ -36,6 +38,9 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "^5.9.3"
   }
 }

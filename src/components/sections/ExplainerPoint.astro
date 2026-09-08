@@ -1,13 +1,22 @@
 ---
 // One labelled point in the GEO explainer. Reused 3x.
 interface Props {
+  index: number;
   title: string;
   body: string;
 }
 
-const { title, body } = Astro.props;
+const { index, title, body } = Astro.props;
+const label = String(index).padStart(2, '0');
 ---
-<div>
-  <h3 class="my-0 mb-1.25 text-[15px] font-semibold text-ink">{title}</h3>
-  <p class="my-0 text-[14.5px] leading-[1.6] text-ink-3">{body}</p>
+
+<div
+  class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 border-t border-(--border-2) pt-5 first:border-t-0 first:pt-0"
+>
+  <span
+    class="text-accent row-span-2 font-mono text-[13px] font-semibold tabular-nums"
+    aria-hidden="true">{label}</span
+  >
+  <h3 class="text-ink my-0 text-[15.5px] font-semibold tracking-[-0.01em]">{title}</h3>
+  <p class="text-ink-3 my-0 text-[14.5px] leading-[1.6]">{body}</p>
 </div>

@@ -1,0 +1,20 @@
+---
+// GEO Compass logo mark — hexagonal compass outline.
+const { class: className, ...rest } = Astro.props;
+---
+
+<svg
+  width="20"
+  height="22"
+  viewBox="0 0 20 22"
+  fill="none"
+  aria-hidden="true"
+  class={className}
+  {...rest}
+>
+  <path
+    d="M10 1.2 18.2 6v10L10 20.8 1.8 16V6L10 1.2Z"
+    stroke="currentColor"
+    stroke-width="1.7"
+    stroke-linejoin="round"></path>
+</svg>

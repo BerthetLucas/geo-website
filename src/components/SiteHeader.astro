@@ -3,6 +3,7 @@ import { m } from '../paraglide/messages.js';
 import ThemeToggle from './ThemeToggle.tsx';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import MobileNav from './MobileNav.tsx';
+import LogoMark from './icons/LogoMark.astro';
 
 const APP_URL = 'https://geo-compass-front-end.vercel.app';
 const loginHref = `${APP_URL}/en/login`;
@@ -15,13 +16,7 @@ const mobileLinks = [
 ---
 <header class="relative z-[1] mx-auto flex max-w-[var(--content-max)] items-center justify-between gap-6 px-7 py-5.5">
   <a href="#top" aria-label={m.header_home_aria()} class="flex items-center gap-2.25">
-    <svg width="19" height="21" viewBox="0 0 20 22" fill="none" aria-hidden="true">
-      <path
-        d="M10 1.2 18.2 6v10L10 20.8 1.8 16V6L10 1.2Z"
-        stroke="var(--accent)"
-        stroke-width="1.7"
-        stroke-linejoin="round"></path>
-    </svg>
+    <LogoMark class="text-accent" />
     <span class="text-[15px] font-semibold tracking-[-0.015em] text-ink">GEO Compass</span>
   </a>
 

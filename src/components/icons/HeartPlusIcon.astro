@@ -1,0 +1,28 @@
+---
+const { class: className, ...rest } = Astro.props;
+---
+
+<svg
+  width="72"
+  height="72"
+  viewBox="0 0 48 48"
+  fill="none"
+  aria-hidden="true"
+  class={className}
+  {...rest}
+>
+  <path
+    d="M24 41C11 33 6 25 6 17c0-5.5 4-9 8.5-9 3.5 0 6.5 2 8 4.8C32 10 35 8 38.5 8 43 8 47 11.5 47 17"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <path
+    d="M24 41C24 41 33 34 38 26"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.35"></path>
+  <path d="M17 22h14M24 15v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+</svg>

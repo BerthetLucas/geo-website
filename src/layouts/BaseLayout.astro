@@ -3,7 +3,6 @@ import '../styles/global.css';
 import ThemeScript from '../components/ThemeScript.astro';
 import Seo from '../components/Seo.astro';
 import StructuredData from '../components/StructuredData.astro';
-import BackgroundGrid from '../components/BackgroundGrid.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 
@@ -15,6 +14,7 @@ interface Props {
 
 const { locale, title, description } = Astro.props;
 ---
+
 <html lang={locale}>
   <head>
     <meta charset="utf-8" />
@@ -26,10 +26,9 @@ const { locale, title, description } = Astro.props;
     <Seo locale={locale} title={title} description={description} />
     <StructuredData />
   </head>
-  <body class="min-h-screen bg-surface-page text-ink antialiased">
-    <BackgroundGrid />
+  <body class="bg-surface-page text-ink min-h-screen antialiased">
     <SiteHeader />
-    <main class="relative z-[1]">
+    <main class="relative z-1">
       <slot />
     </main>
     <SiteFooter />

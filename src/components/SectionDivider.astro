@@ -1,0 +1,10 @@
+---
+// Horizontal divider with the GEO Compass logo mark centered on a fading rule.
+import LogoMark from './icons/LogoMark.astro';
+---
+
+<div class="mx-auto my-14 flex max-w-(--content-max) items-center gap-4 px-7" aria-hidden="true">
+  <span class="h-px flex-1 bg-linear-to-r from-transparent to-border-token"></span>
+  <LogoMark class="shrink-0 text-accent" />
+  <span class="h-px flex-1 bg-linear-to-l from-transparent to-border-token"></span>
+</div>

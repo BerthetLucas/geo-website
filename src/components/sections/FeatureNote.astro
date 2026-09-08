@@ -2,15 +2,14 @@
 interface Props {
   title: string;
   body: string;
+  detail: string;
 }
 
-const { title, body } = Astro.props;
+const { title, body, detail } = Astro.props;
 ---
 
-<article class="flex flex-col gap-4.5">
+<article class="flex flex-col items-center gap-4.5 text-center">
   <h2 class="text-ink my-0 text-[28px] font-bold tracking-[-0.022em]">{title}</h2>
-  <div class="grid aspect-16/10 place-items-center overflow-hidden rounded-[14px] bg-white">
-    <slot name="visual" />
-  </div>
+  <p class="text-ink-2 my-0 max-w-[52ch] text-[17px] leading-[1.6]">{detail}</p>
   <p class="text-ink-3 my-0 max-w-[46ch] text-[15px] leading-[1.6]">{body}</p>
 </article>
