@@ -5,6 +5,7 @@ import Seo from '../components/Seo.astro';
 import StructuredData from '../components/StructuredData.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   locale: 'fr' | 'en';
@@ -26,6 +27,7 @@ const { locale, title, description } = Astro.props;
     <ThemeScript />
     <Seo locale={locale} title={title} description={description} />
     <StructuredData />
+    <Analytics />
   </head>
   <body class="bg-surface-page text-ink min-h-screen antialiased">
     <SiteHeader />
