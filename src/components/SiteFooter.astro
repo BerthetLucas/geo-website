@@ -2,12 +2,13 @@
 import { m } from '../paraglide/messages.js';
 
 const APP_URL = 'https://geo-compass-front-end.vercel.app';
+const locale = Astro.currentLocale ?? 'fr';
 
 const links = [
-  { href: `${APP_URL}/en/legal`, label: m.footer_legal() },
-  { href: `${APP_URL}/en/terms`, label: m.footer_terms() },
-  { href: `${APP_URL}/en/privacy`, label: m.footer_privacy() },
-  { href: `${APP_URL}/en/login`, label: m.footer_login() },
+  { href: `${APP_URL}/${locale}/legal`, label: m.footer_legal() },
+  { href: `${APP_URL}/${locale}/terms`, label: m.footer_terms() },
+  { href: `${APP_URL}/${locale}/privacy`, label: m.footer_privacy() },
+  { href: `${APP_URL}/${locale}/login`, label: m.footer_login() },
 ];
 ---
 
